@@ -8,7 +8,7 @@ Math.lenFrac =  function(number) {
 };
 Math.gcd = (x, y) => x % y ? gcd(y, x % y) : y;
 Math.rti = (x, y) => {
-  let mxl = Math.max(x, y);
+  let mxl = Math.max(Math.lenFrac(x), Math.lenFrac(y));
   let mxp = Math.pow(10, mxl);
   return {x: mxp * x, y: mxp * y};
 }
