@@ -28,10 +28,25 @@
     <script defer type="text/javascript" src="/FlagRatios/scripts/main.js" />
   </head>
   <body>
-    <label>Ratio: <input type="number" id="height" name="height" /> : <input type="number" id="width" name="width" /></label>
+      <div class="title">
+        <span>FlagRatios Generator: 旗の比率のサンプルジェネレータ</span>
+      </div>
+      <div class="subtitle">
+        <span>by Haruka Sato </span><span>at 6 Apr 2024</span>
+        <span>© Haruka Sato 2025- under Mozilla Public License 2.0</span>
+      </div>
+    </div>
+    <div class="content">
+      <div id="form">
+        <div class="lead">
+          入力された比率から、旗サンプルとしてSVG形式で画像を生成します。表示する他、ダウンロードも可能です。<br />
+        </div>
+    <label>Ratio: <input type="number" id="height" name="height" /> : <input type="number" id="width" name="width" /></label><br />
     
     <label for="colour">Colour: </label>
-    <input type="color" id="colour" name="colour" />
-    <a href="" download="flag.svg">ダウンロード</a>
+    <input type="color" id="colour" name="colour" /><br />
+    <a href="output" download="flag.svg">ダウンロード</a>     </div>
+      <img src="/FlagRatios/assets/Flag_Icon.png" />
+    </div>
   </body>
 </html>
