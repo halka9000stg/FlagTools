@@ -46,6 +46,7 @@ function getInputs(){
 }
 const link = document.querySelector("a");
 const handler = (event) => {
+  event.preventDefault();
   let conf = getInputs();
   event.currentTarget.setAttribute("href",
     string2url(buildSvg(conf.height, conf.width, conf.colour)));
