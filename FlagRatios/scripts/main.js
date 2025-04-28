@@ -44,7 +44,7 @@ function getInputs(){
   let c = document.querySelector("input#colour").value;
   return {height: h, width: w, colour: c};
 }
-
+window.addEventListener('load', ()=>{
 const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", {
 calendar: "japanese",
 numberingSystem: "latn",
@@ -75,3 +75,4 @@ document.querySelectorAll('input').forEach(input => {
     downloadLink.setAttribute("download", `flag_${conf.colour.substring(1)}_${conf.height}x${conf.width}.svg`);
   });
 });
+}
