@@ -47,8 +47,11 @@ function getInputs(){
 document.querySelectorAll('input').forEach(input => {
   input.addEventListener('input', (event) => {
     let conf = getInputs();
+    let imgd = string2url(buildSvg(conf.height, conf.width, conf.colour));
+    let previewImg = document.querySelector('img.preview');
+    previewImg.setAttribute("src", imgd);
     let downloadLink = document.querySelector('a');  // ダウンロードリンクの取得
-    downloadLink.setAttribute("href", string2url(buildSvg(conf.height, conf.width, conf.colour)));
+    downloadLink.setAttribute("href", imgd);
     downloadLink.setAttribute("download", `flag_${conf.colour.substring(1)}_${conf.height}x${conf.width}.svg`);
   });
 });
