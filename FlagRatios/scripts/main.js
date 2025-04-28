@@ -44,14 +44,11 @@ function getInputs(){
   let c = document.querySelector("input#colour").value;
   return {height: h, width: w, colour: c};
 }
-const link = document.querySelector("a");
-const handler = (event) => {
-  event.preventDefault();
-  let conf = getInputs();
-  event.currentTarget.setAttribute("href",
-    string2url(buildSvg(conf.height, conf.width, conf.colour)));
-  event.currentTarget.setAttribute("download",
-    `flag_${conf.colour.substring(1)}_${conf.height}x${conf.width}.svg`);
-};
-link.addEventListener("mousedown", handler);
-link.addEventListener("touchstart", handler);
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', (event) => {
+    let conf = getInputs();
+    let downloadLink = document.querySelector('a');  // ダウンロードリンクの取得
+    downloadLink.setAttribute("href", string2url(buildSvg(conf.height, conf.width, conf.colour)));
+    downloadLink.setAttribute("download", `flag_${conf.colour.substring(1)}_${conf.height}x${conf.width}.svg`);
+  });
+});
