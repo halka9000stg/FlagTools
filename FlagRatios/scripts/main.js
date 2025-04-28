@@ -44,6 +44,26 @@ function getInputs(){
   let c = document.querySelector("input#colour").value;
   return {height: h, width: w, colour: c};
 }
+
+const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", {
+calendar: "japanese",
+numberingSystem: "latn",
+timeZone: "Asia/Tokyo",
+weekday: "narrow",
+era: "short",
+year: "2-digit",
+month: "numeric",
+day: "numeric",
+hour: "numeric",
+minute: "numeric",
+second: "numeric",
+fractionalSecondDigits: 2,
+hourCycle: "h23",
+timeZoneName: "short"
+});
+document
+  .querySelector("span.rt_ready")
+  .innerHTML = "JavaScriptは起動し実行されています。現在日時は" + df.format(new Date()) + "です。";
 document.querySelectorAll('input').forEach(input => {
   input.addEventListener('input', (event) => {
     let conf = getInputs();
