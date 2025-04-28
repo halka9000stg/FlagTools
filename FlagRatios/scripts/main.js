@@ -1,3 +1,37 @@
+window.addEventListener('load', ()=>{
+const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", {
+calendar: "japanese",
+numberingSystem: "latn",
+timeZone: "Asia/Tokyo",
+weekday: "narrow",
+era: "short",
+year: "2-digit",
+month: "numeric",
+day: "numeric",
+hour: "numeric",
+minute: "numeric",
+second: "numeric",
+fractionalSecondDigits: 2,
+hourCycle: "h23",
+timeZoneName: "short"
+});
+document
+  .querySelector("span.rt_ready")
+  .innerHTML = "JavaScriptは起動し実行されています。現在日時は" + df.format(new Date()) + "です。";
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', (event) => {
+    let conf = getInputs();
+    let imgd = string2url(buildSvg(conf.height, conf.width, conf.colour));
+    let previewImg = document.querySelector('img.preview');
+    previewImg.setAttribute("src", imgd);
+    let downloadLink = document.querySelector('a');  // ダウンロードリンクの取得
+    downloadLink.setAttribute("href", imgd);
+    downloadLink.setAttribute("download", `flag_${conf.colour.substring(1)}_${conf.height}x${conf.width}.svg`);
+  });
+});
+}
+
+
 Math.isInteger = (n) => Math.trunc(n) == n;
 Math.len = (n) => Math.lenInt(n) + (Math.isInteger(n) ? 0 : Math.lenFrac(n));
 Math.lenInt =  (n) => (Math.abs(Math.floor(Math.log10(Math.trunc(n))) + 1) == Infinity) ? 1 : Math.floor(Math.log10(n)) + 1;
@@ -43,36 +77,4 @@ function getInputs(){
   let w = parseFloat(document.querySelector("input#width").value);
   let c = document.querySelector("input#colour").value;
   return {height: h, width: w, colour: c};
-}
-window.addEventListener('load', ()=>{
-const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", {
-calendar: "japanese",
-numberingSystem: "latn",
-timeZone: "Asia/Tokyo",
-weekday: "narrow",
-era: "short",
-year: "2-digit",
-month: "numeric",
-day: "numeric",
-hour: "numeric",
-minute: "numeric",
-second: "numeric",
-fractionalSecondDigits: 2,
-hourCycle: "h23",
-timeZoneName: "short"
-});
-document
-  .querySelector("span.rt_ready")
-  .innerHTML = "JavaScriptは起動し実行されています。現在日時は" + df.format(new Date()) + "です。";
-document.querySelectorAll('input').forEach(input => {
-  input.addEventListener('input', (event) => {
-    let conf = getInputs();
-    let imgd = string2url(buildSvg(conf.height, conf.width, conf.colour));
-    let previewImg = document.querySelector('img.preview');
-    previewImg.setAttribute("src", imgd);
-    let downloadLink = document.querySelector('a');  // ダウンロードリンクの取得
-    downloadLink.setAttribute("href", imgd);
-    downloadLink.setAttribute("download", `flag_${conf.colour.substring(1)}_${conf.height}x${conf.width}.svg`);
-  });
-});
 }
