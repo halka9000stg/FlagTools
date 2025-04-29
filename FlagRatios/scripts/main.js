@@ -1,9 +1,4 @@
-let blob = new Blob([ "test text" ], { "type" : "text/plain" });
-if (window.navigator.msSaveBlob) { 
-                    window.navigator.msSaveBlob(blob, "test.txt"); 
-}
-window.addEventListener('load', ()=>{
-const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", {
+const dfc = {
 calendar: "japanese",
 numberingSystem: "latn",
 timeZone: "Asia/Tokyo",
@@ -18,7 +13,11 @@ second: "numeric",
 fractionalSecondDigits: 2,
 hourCycle: "h23",
 timeZoneName: "short"
-});
+};
+const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", dfc);
+
+window.addEventListener('load', ()=>{
+
 document
   .querySelector("span.rt_ready")
   .innerHTML = "JavaScriptは起動し実行されています。現在日時は" + df.format(new Date()) + "です。";
