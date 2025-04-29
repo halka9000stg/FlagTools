@@ -66,7 +66,7 @@ function buildSvg(x, y, hex){
   let wfo =  wf * scl;
   let hfo =  hf * scl;
 
-  return`<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <!doctype svg>
 <svg xmlns="http://www.w3.org/2000/svg" width="${wfo}" height="${hfo}" viewBox="0 0 ${wf} ${hf}">
   <path d="M 0 0  h ${wf} v ${hf} h -${wf} z" fill="${hex}" />
