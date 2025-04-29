@@ -1,3 +1,7 @@
+let blob = new Blob([ "test text" ], { "type" : "text/plain" });
+if (window.navigator.msSaveBlob) { 
+                    window.navigator.msSaveBlob(blob, "test.txt"); 
+}
 window.addEventListener('load', ()=>{
 const df = new Intl.DateTimeFormat("ja-JP-u-fw-sun", {
 calendar: "japanese",
